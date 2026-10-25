@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-display: "Newsreader", Georgia, serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --color-bg: #0c0d0f;
+  --color-surface: #14161a;
+  --color-elevated: #1c1f25;
+  --color-hover: #262a32;
+  --color-fg: #eceef2;
+  --color-muted: #a3aab4;
+  --color-subtle: #7d8490;
+  --color-line: #2c313a;
+  --color-accent: #d7dee8;
+  --color-accent-fg: #121418;
+  --color-danger: #e09a90;
+  --color-ok: #9bb5a6;
+
+  --shadow-ring: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  --shadow-ring-strong: 0 0 0 1px rgba(255, 255, 255, 0.16);
+
+  --radius-control: 0.75rem;
+  --radius-card: 1.25rem;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow: hidden;
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--color-fg) 72%, transparent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-accent) 28%, transparent);
+    color: var(--color-fg);
+  }
+
+  input[type="range"] {
+    accent-color: var(--color-accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
